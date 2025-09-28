@@ -9,7 +9,7 @@ export const initSocket = async () =>{
         autoConnect: true,
     };
     
-    const socket = io('http://localhost:5000', options);
+    const socket = io(`${process.env.REACT_APP_BACKEND_URL}`, options);
     
     // Add connection event listeners for debugging
     socket.on('connect', () => {
