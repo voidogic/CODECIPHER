@@ -1,0 +1,241 @@
+.codemirror {
+  min-height: calc(100vh - 20px);
+  font-size: 16px;
+  line-height: 1.6;
+  padding-top: 20px;
+}
+.compile-window {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  max-height: 40%;
+  background-color: #f8f9fa;
+  box-shadow: 0px -4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+  z-index: 10;
+  overflow-y: auto;
+}
+
+.slide-up {
+  transform: translateY(0);
+}
+
+.slide-down {
+  transform: translateY(100%);
+}
+
+.output-box {
+  height: 150px;
+  background-color: #e9ecef;
+  padding: 10px;
+  overflow-y: auto;
+  border: 1px solid #ced4da;
+}
+
+/* Game-like neon/glass theme */
+body {
+  font-family: 'Orbitron', 'Press Start 2P', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  background:
+    radial-gradient(1200px 600px at 10% -10%, rgba(0, 255, 255, 0.12), transparent 60%),
+    radial-gradient(1000px 500px at 110% 10%, rgba(255, 0, 255, 0.12), transparent 60%),
+    linear-gradient(180deg, #0b0f1a 0%, #0a0e17 100%);
+  color: #e2e8f0;
+}
+
+.glass-panel {
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(8px);
+  border-radius: 12px;
+}
+
+.neon-text {
+  color: #7dd3fc;
+  text-shadow: 0 0 8px rgba(125, 211, 252, 0.6), 0 0 16px rgba(56, 189, 248, 0.4);
+}
+
+.btn-neon {
+  background: linear-gradient(90deg, #06b6d4, #7c3aed);
+  border: none;
+  color: white !important;
+  box-shadow: 0 0 12px rgba(6, 182, 212, 0.5), 0 0 24px rgba(124, 58, 237, 0.4);
+}
+
+.btn-neon:hover {
+  filter: brightness(1.1);
+  box-shadow: 0 0 16px rgba(6, 182, 212, 0.7), 0 0 28px rgba(124, 58, 237, 0.6);
+}
+
+.select-neon {
+  background: rgba(2, 6, 23, 0.8);
+  color: #e2e8f0;
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  box-shadow: 0 4px 14px rgba(2, 6, 23, 0.6), inset 0 0 10px rgba(99, 102, 241, 0.12);
+}
+
+.select-neon:focus {
+  outline: none !important;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.25), 0 8px 20px rgba(0, 0, 0, 0.35);
+  border-color: rgba(99, 102, 241, 0.5);
+}
+
+/* Dark dropdown menu */
+.select-neon option {
+  background: #0b0f1a;
+  color: #e2e8f0;
+}
+
+.btn-outline-light {
+  border-color: rgba(226, 232, 240, 0.4);
+  color: #e2e8f0;
+}
+
+.btn-outline-light:hover {
+  background: rgba(226, 232, 240, 0.1);
+}
+
+.panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.editor-wrapper {
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.tips-panel {
+  background: rgba(2, 6, 23, 0.6);
+  border: 1px solid rgba(125, 211, 252, 0.12);
+  color: #cbd5e1;
+}
+
+.tips-panel li {
+  color: #94a3b8;
+  margin-bottom: 6px;
+}
+
+/* Members list */
+.member-item {
+  border: 1px solid rgba(148, 163, 184, 0.15);
+  border-radius: 10px;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.member-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+}
+
+.member-name {
+  color: #e2e8f0;
+  max-width: 120px;
+}
+
+.status-dot {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 2px solid #0b0f1a;
+}
+
+.sidebar-title {
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 12px;
+  color: #94a3b8;
+  padding: 6px 10px;
+  border: 1px solid rgba(148, 163, 184, 0.15);
+  border-radius: 8px;
+  background: rgba(2, 6, 23, 0.5);
+}
+
+/* Language selector styling */
+.lang-group {
+  padding: 6px 10px;
+  border: 1px solid rgba(148, 163, 184, 0.15);
+  border-radius: 10px;
+  background: rgba(2, 6, 23, 0.5);
+}
+
+.lang-icon {
+  color: #7dd3fc;
+  text-shadow: 0 0 6px rgba(125, 211, 252, 0.5);
+  font-weight: 700;
+}
+
+.lang-label {
+  color: #94a3b8;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.lang-select {
+  min-width: 180px;
+}
+
+/* Toolbar container to position dropdown */
+.lang-toolbar {
+  position: relative;
+}
+
+/* Custom dropdown menu with same theme (not white) */
+.lang-menu {
+  position: absolute;
+  top: 48px;
+  right: 8px;
+  min-width: 200px;
+  padding: 8px;
+  border: 1px solid rgba(148, 163, 184, 0.15);
+  border-radius: 10px;
+  background: rgba(2, 6, 23, 0.9);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45);
+  z-index: 2000;
+  opacity: 0;
+  transform: translateY(-6px) scale(0.98);
+  pointer-events: none;
+  transition: opacity 160ms ease, transform 220ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.lang-menu.open {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+.lang-item {
+  display: block;
+  width: 100%;
+  text-align: left;
+  background: transparent;
+  color: #e2e8f0;
+  border: 1px solid transparent;
+  padding: 8px 10px;
+  border-radius: 8px;
+  margin-bottom: 6px;
+}
+
+.lang-item:hover {
+  background: rgba(30, 41, 59, 0.6);
+  border-color: rgba(99, 102, 241, 0.35);
+}
+
+.lang-item.active {
+  background: rgba(99, 102, 241, 0.15);
+  border-color: rgba(99, 102, 241, 0.45);
+}
+
+/* Soften neon inside Tips */
+.tips-panel .neon-text {
+  color: #93c5fd;
+  text-shadow: none;
+}
